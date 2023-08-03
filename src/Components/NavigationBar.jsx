@@ -1,20 +1,23 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
+// import SignUp from '../Pages/Signup';
 import { Link } from 'react-router-dom';
-
+import {FaShoppingCart} from 'react-icons/fa';
+import {GiShoppingBag} from 'react-icons/gi';
+import {HiHome} from 'react-icons/hi';
 
 function NavigationBar() {
 
   const bgImg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9NreTLmoaAa3LkFy1to2YNAs2ZhldMR8mIA&usqp=CAU";
 
-
+  const handleShow = () => setShow(true);
 
   return (
     <>
@@ -30,7 +33,7 @@ function NavigationBar() {
           <Container fluid>
           <Link className='nav-bar text-decoration-none fs-3  ' to="/">
 
-          <h1 className=" fst-italic fst-bold  text-body-secondary text-center ms-5">EzyShope</h1>
+          <h1 className=" fst-italic fst-bold  text-body-secondary text-center ms-5">EzyShop</h1>
           </Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -44,12 +47,12 @@ function NavigationBar() {
                 </Offcanvas.Title> */}
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-       <Link className='nav-link col-2 btn btn-outline-dark' to="/">Home</Link>
-       <Link className='nav-link col-2 btn btn-outline-dark' to="/products">Products</Link>
+                <Nav className="justify-content-end flex-grow-1 pe-4">
+       <Link className='nav-link col-3 btn btn-outline-dark' to="/">Home   <HiHome/></Link>
+       <Link className='nav-link col-3 btn btn-outline-dark' to="/products">Products <GiShoppingBag/></Link>
+       <Link className='nav-link col-2 btn btn-outline-dark' to="/cart">Cart<FaShoppingCart/></Link>
        <Link className='nav-link col-2 btn btn-outline-secondary' to="/login">Login</Link>
-       <Link className='nav-link col-2 btn btn-outline-secondary'  to="/signup">Signup</Link>
-                 
+       <Link className='nav-link col-2 btn btn-outline-secondary' to="/signup" onClick={handleShow}>SignUp</Link>                 
                 </Nav>
                 <Form className="d-flex">
                   <Form.Control

@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import LoadingLoader from '../Components/LoadingLoader';
+
 
 export default function CategoryPage() {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
+  const loaderDelay = 2000;
 
   useEffect(() => {
     axios
@@ -15,6 +18,9 @@ export default function CategoryPage() {
   }, [categoryName]);
 
   return (
+   <>
+    <LoadingLoader delay={loaderDelay} />
+    
     <div className="container">
       <div className="my-5 text-center">
         <h1 className='fw-bold'>{categoryName.toUpperCase()}</h1>
@@ -55,6 +61,8 @@ export default function CategoryPage() {
         ))}
       </div>
     </div>
+   
+   </>
   );
 }
 

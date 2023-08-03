@@ -69,9 +69,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import LoadingLoader from '../Components/LoadingLoader';
 
 export default function CategoryPage() {
   const [products, setProducts] = useState([]);
+  const loaderDelay = 2000; 
 
   useEffect(() => {
     axios
@@ -81,6 +83,9 @@ export default function CategoryPage() {
   }, []);
 
   return (
+<>
+<LoadingLoader delay={loaderDelay} />
+
     <div className="container">
       <div className="my-5 text-center">
         <h1 className='fw-bold'>All Products</h1>
@@ -117,5 +122,7 @@ export default function CategoryPage() {
         ))}
       </div>
     </div>
+</>
+
   );
 }

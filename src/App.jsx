@@ -12,16 +12,27 @@ import NavigationBar from './Components/NavigationBar'
 import FooterSection from './Components/FooterSection'
 import CategoryPage from './Pages/CategoryPage'
 import ProductPage from './Pages/ProductPage'
+import SignUp from './Pages/Signup'
+import Cart from './Components/Cart'
+import LoadingLoader from './Components/LoadingLoader'
 
 
 function App() {
   const [user, setUser] = useState(false)
+  const loaderDelay = 2000; 
+
+
 
   return (
+  
    
 <>
-
+<LoadingLoader delay={loaderDelay} />
     <NavigationBar />
+
+
+   
+
     {
         user
 
@@ -32,6 +43,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:productID" element={<ProductPage />} />
+              <Route path="/cart" element={<Cart />} />
               <Route path="/products/category/:categoryName" element={<CategoryPage />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
@@ -41,14 +53,15 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="*" element={<Navigate to="/login" replace={true} />} />
+              <Route path="/signup" element={< SignUp  to="/products" replace={true} />} />
+                            <Route path="*" element={<Navigate to="/login" replace={false}   />} />
             </Routes>
           )
 
       }
 
       <FooterSection/>
+      
 
 </>
   )
