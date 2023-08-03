@@ -53,7 +53,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={< SignUp  to="/products" replace={true} />} />
+              <Route path="/signup" element={< SignUp  />} />
                             <Route path="*" element={<Navigate to="/login" replace={true}   />} />
             </Routes>
           )
