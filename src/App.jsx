@@ -51,8 +51,13 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+<<<<<<< HEAD
               <Route path="/signup" element={< SignUp />} />
               <Route path="*" element={<Navigate to="/login" replace={false} />} />
+=======
+              <Route path="/signup" element={< SignUp  />} />
+                            <Route path="*" element={<Navigate to="/login" replace={true}   />} />
+>>>>>>> 31dfe37ef5724717acda525b557cf50259d91ec6
             </Routes>
           )
 
