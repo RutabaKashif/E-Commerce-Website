@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -11,18 +12,28 @@ import { Link } from 'react-router-dom';
 import {FaShoppingCart} from 'react-icons/fa';
 import {GiShoppingBag} from 'react-icons/gi';
 import {HiHome} from 'react-icons/hi';
+import { useContext } from 'react';
+import { GlobalContext } from '../context/context';
+import { useEffect } from 'react';
 
 function NavigationBar() {
+  const { state, dispatch } = useContext(GlobalContext); // Use state instead of data
+
+  useEffect(() => {
+    console.log("CONTEXT DATA", state);
+  }, [state]);
 
   const bgImg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9NreTLmoaAa3LkFy1to2YNAs2ZhldMR8mIA&usqp=CAU";
 
   const handleShow = () => setShow(true);
 
+ 
+
   return (
     <>
-      {[false,].map((expand) => (
-        <Navbar 
+      {[false].map((expand)  => (
+        <Navbar
         style={{
           backgroundImage: `url(${bgImg})`,
           backgroundSize: "4vw, 12vh",
@@ -39,12 +50,17 @@ function NavigationBar() {
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end" bg="dark" data-bs-theme="dark"
+              placement="end" bg="dark" data-bs-theme="dark"  
             >
-              <Offcanvas.Header closeButton>
-                {/* <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
-                </Offcanvas.Title> */}
+              <Offcanvas.Header >
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} className='fs-5 '  style={{
+          backgroundImage: `url(${bgImg})`,
+          backgroundSize: "4vw, 10vh",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "left",
+        }} >
+                <h1 className=" fst-italic text-body-secondary text-center ms-5">EzyShop</h1>
+ </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-4">

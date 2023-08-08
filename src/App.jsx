@@ -19,24 +19,22 @@ import LoadingLoader from './Components/LoadingLoader'
 
 function App() {
   const [user, setUser] = useState(false)
-  const loaderDelay = 2000; 
+  const loaderDelay = 2000;
 
 
 
   return (
-  
-   
-<>
-<LoadingLoader delay={loaderDelay} />
-    <NavigationBar />
 
 
-   
+    <>
+      <LoadingLoader delay={loaderDelay} />
+      <NavigationBar />
 
-    {
+
+
+
+      {
         user
-
-
           ?
           (
             <Routes>
@@ -53,17 +51,17 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={< SignUp  to="/products" replace={true} />} />
-                            <Route path="*" element={<Navigate to="/login" replace={false}   />} />
+              <Route path="/signup" element={< SignUp />} />
+              <Route path="*" element={<Navigate to="/login" replace={false} />} />
             </Routes>
           )
 
       }
 
-      <FooterSection/>
-      
+      <FooterSection />
 
-</>
+
+    </>
   )
 }
 
